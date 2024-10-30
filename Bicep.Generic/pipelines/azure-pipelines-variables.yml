@@ -1,0 +1,4 @@
+variables:
+    FileMask: '*.bicep' # this value is case sensitive due to being used in az pipelines / git command
+    ContainerRegistryName: 'ConnellsGroupBicepRegistry'
+    ServiceConnection: 'Azure - Bicep Registry'

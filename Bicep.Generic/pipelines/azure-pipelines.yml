@@ -1,0 +1,44 @@
+# File: azure-pipelines.yml
+
+# Versions will differ depending on the pipeline they are used in
+# Please ensure that you have the correct versioning before running your pipeline
+name: $(major).$(minor)$(Rev:.r)
+variables:
+   major: 1
+   minor: 0
+
+trigger:
+- none 
+
+pool:
+  name: default
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: IT DevOps/YamlTemplates
+
+stages:
+- stage: AcrPublish
+  
+  jobs:
+  - job: Publish_Files_To_Acr
+
+    variables:
+    # Variables file located in home repo 
+    - name: ContainerRegistryName
+      value: 'ConnellsGroupBicepRegistry'
+    - name: FileMask
+      value: '*.bicep'
+    - name: ServiceConnection
+      value: 'Azure - Bicep Registry'
+
+    steps:
+    # Template file located in YamlTemplates repo in the Group folder
+    - template: Components/azure-pipelines-AzContainerRegistryPush-Diff.yml@templates
+      parameters:
+        FileMask: ${{ variables.FileMask }}
+        ContainerRegistryName: ${{ variables.ContainerRegistryName }}
+        ServiceConnection: ${{ variables.ServiceConnection }}
+        
