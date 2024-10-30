@@ -15,7 +15,7 @@ function ParamBuilder
 
 $azureApplicationId = "a3afbd46-9b29-4cd1-b7fb-756391e24922"                                             #$OctopusParameters["AzureAccount.Client"]
 $azureTenantId = "893c6ab5-5aae-4706-be15-dc729e4f10e8"                                                  #$OctopusParameters["AzureAccount.TenantId"]
-$azurePassword = ConvertTo-SecureString "pvY8Q~OrRVoJQ1_d3CfLn4AWuE8YahIV7zAKicoV" -AsPlainText -Force   #$OctopusParameters["AzureAccount.Password"]
+$azurePassword = ConvertTo-SecureString "" -AsPlainText -Force   #$OctopusParameters["AzureAccount.Password"]
 $subscriptionId = "f3b14109-a3de-4f54-9f58-46d891380a7e" 
 
 ############################
